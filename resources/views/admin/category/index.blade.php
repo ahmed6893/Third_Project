@@ -73,9 +73,15 @@
                                         @foreach($categories as $category)
                                         <tr>
                                             <td>{{$loop->iteration}}</td>
+                                            @if($category->images)
                                             <td>
                                                 <img src="{{asset($category->images)}}" alt="" class="icon-shape icon-sm" />
                                             </td>
+                                            @else
+                                            <td>
+                                                NO Image
+                                            </td>
+                                            @endif
                                             <td><a href="#" class="text-reset">{{$category->name}}</a></td>
                                             <td class="text-dark">
                                                 {{$category->status == 1 ? 'Published' : 'Unpublished'}}

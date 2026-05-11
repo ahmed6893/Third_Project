@@ -85,9 +85,9 @@
                                         </select>
                                     </div>
                                     <div class="mb-3 col-lg-6">
-                                        <label class="form-label">Colors</label>
+                                        <label class="form-label">Kilogram</label>
                                         <select class="form-select" name="kilogram[]" multiple>
-                                            <option value="">Select Colors</option>
+                                            <option value="">Select Kilogram</option>
                                             @foreach($kilograms as $kilogram)
                                                 <option value="{{$kilogram->id}}" @foreach($product->productKilograms as $productKilogram) {{$kilogram->id == $productKilogram->kilogram_id ? 'selected' : ''}} @endforeach >{{$kilogram->name}}</option>
                                             @endforeach

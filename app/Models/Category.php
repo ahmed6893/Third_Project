@@ -13,7 +13,9 @@ class Category extends Model
         self::$category = new Category();
         self::$category->name        = $request->name;
         self::$category->description = $request->description;
+        if ($request->hasFile('images')) {
         self::$category->images      = self::getImageUrl($request);
+        }
         self::$category->save();
     }
     public static function getImageUrl($request)

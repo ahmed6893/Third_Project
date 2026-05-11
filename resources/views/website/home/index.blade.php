@@ -421,9 +421,9 @@
                 <!-- slider -->
                 <div class="product-slider-second" id="slider-second">
                     <!-- item -->
+                    @foreach($products as $product)
                     <div class="item">
                         <!-- item -->
-                        @foreach($products as $product)
                         <div class="card card-product mb-lg-4">
                               <div class="card-body">
                                 <!-- badge -->
@@ -455,7 +455,7 @@
                                         <i class="bi bi-star-fill"></i>
                                         <i class="bi bi-star-fill"></i>
                                         <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
+                                        <i class="b i bi-star-fill"></i>
                                         <i class="bi bi-star-half"></i>
                                     </small>
                                     <span class="text-muted small">4.5(149)</span>
@@ -489,8 +489,8 @@
                                 </div>
                             </div>
                         </div>
-                        @endforeach
                     </div>
+                    @endforeach
                 </div>
             </div>
         </section>

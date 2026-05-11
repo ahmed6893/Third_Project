@@ -130,8 +130,34 @@
                         </ul>
                     </div>
                 </li>
+
+                <li class="nav-item">
+                    <a
+                        class="nav-link  collapsed "
+                        href="#"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navCustomer"
+                        aria-expanded="false"
+                        aria-controls="navCustomer"
+                    >
+                        <div class="d-flex align-items-center">
+                            <span class="nav-link-icon"><i class="bi bi-people"></i></span>
+                            <span class="nav-link-text">Users</span>
+                        </div>
+                    </a>
+                    <div id="navCustomer" class="collapse " data-bs-parent="#sideNavbar">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link " href="{{route('all-user')}}">Users Module</a>
+                            </li>
+                            <!-- Nav item -->
+                            <li class="nav-item">
+                                <a class="nav-link " href="{{route('create.user')}}">Create Customers</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
-

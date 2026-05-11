@@ -12,4 +12,10 @@ class AdminCustomerController extends Controller
         $customer = Customer::with('orders')->get();
         return view('admin.customer.index',['customers'=>$customer]);
     }
+    public function destroy($id)
+    {
+        $customer = Customer::findOrFail($id);
+        $customer->delete();
+        return back()->with('delete','Customer Deleted Successfully');
+    }
 }

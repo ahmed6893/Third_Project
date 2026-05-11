@@ -19,6 +19,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SslCommerzPaymentController;
 use App\Http\Controllers\CustomerDashboardController;
 use App\Http\Controllers\AdminCustomerController;
+use App\Http\Controllers\UserController;
 
 Route::get('/',                         [FreshCartController::class,'index'])               ->name('home');
 Route::get('/fresh/{id}',               [FreshCartController::class,'product'])             ->name('fresh');
@@ -86,5 +87,12 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'),'verified',]
     Route::get('/order/download-invoice/{id}',  [OrderController::class,'downloadInvoice']) ->name('order.download-invoice');
     Route::post('/order/destroy/{id}',          [OrderController::class,'destroy'])         ->name('order.destroy');
 
-    Route::get('/all-customers', [AdminCustomerController::class, 'index'])->name('all-customer');
+    Route::get('/all-customers',        [AdminCustomerController::class, 'index'])  ->name('all-customer');
+    Route::delete('/admin-customers/{id}', [AdminCustomerController::class, 'destroy'])->name('admin.customer.destroy');
+
+    Route::get('/all-users',            [UserController::class, 'index'])  ->name('all-user');
+    Route::get('/users/create',         [UserController::class, 'create']) ->name('create.user');
+    Route::post('/user/new',            [UserController::class, 'store'])  ->name('new.user');
+    Route::delete('/admin-user/{id}',   [UserController::class, 'destroy'])->name('admin.user.destroy');
+
 });

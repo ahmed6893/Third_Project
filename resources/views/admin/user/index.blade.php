@@ -12,18 +12,23 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb mb-0">
                                     <li class="breadcrumb-item"><a href="#" class="text-inherit">Dashboard</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Customers</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Users</li>
                                 </ol>
                             </nav>
                         </div>
                         <div>
-                            <a href="create-customers.html" class="btn btn-primary">Add New Customer</a>
+                            <a href="{{route('create.user')}}" class="btn btn-primary">Add New User</a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xl-12 col-12 mb-5">
+                    @if(session('delete'))
+                        <div class="alert alert-danger">
+                            {{ session('delete') }}
+                        </div>
+                    @endif
                     <div class="card h-100 card-lg">
                         <div class="p-6">
                             <div class="row justify-content-between">
@@ -40,65 +45,53 @@
                                 <table class="table table-centered table-hover table-borderless mb-0 table-with-checkbox text-nowrap">
                                     <thead class="bg-light">
                                     <tr>
-
                                         <th>Name</th>
                                         <th>Email</th>
-                                        <th>Purchase Date</th>
-                                        <th>Phone</th>
-                                        <th>Spent</th>
-
+                                        <th></th>
                                         <th></th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($customers as $customer)
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <img src="{{asset($customer->image)}}" alt="No Photo" class="avatar avatar-xs rounded-circle" />
-                                                <div class="ms-2">
-                                                    <a href="#!" class="text-inherit" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">{{$customer->first_name.$customer->last_name}}</a>
+                                    @foreach($users as $user)
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="{{asset($user->image)}}" alt="No Photo" class="avatar avatar-xs rounded-circle" />
+                                                    <div class="ms-2">
+                                                        <a href="#!" class="text-inherit" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">{{$user->name}}</a>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </td>
-                                        <td>{{$customer->email}}</td>
+                                            </td>
+                                            <td>{{$user->email}}</td>
 
-                                        <td>
-                                            @if($customer->orders->count()>0)
-                                                {{\Carbon\Carbon::parse($customer->orders->last()->order_date)->format('d M, Y')}}
-                                            @else
-                                                No Orders
-                                            @endif
-                                        </td>
-                                        <td>{{$customer->phone}}</td>
-                                        <td>{{number_format($customer->orders->sum('order_total'),2)}}</td>
+                                            <td></td>
 
-                                        <td>
-                                            <div class="dropdown">
-                                                <a href="#" class="text-reset" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <i class="feather-icon icon-more-vertical fs-5"></i>
-                                                </a>
-                                                <ul class="dropdown-menu">
-                                                    <li>
-                                                        <form action="{{route('admin.customer.destroy',$customer->id)}}" method="post" onclick="return confirm('Are Your Sure you want delete this customer..')">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button class="dropdown-item text-danger">
-                                                                <i class="bi bi-trash me-3"></i>
-                                                                Delete
-                                                            </button>
-                                                        </form>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="customers-edits.html">
-                                                            <i class="bi bi-pencil-square me-3"></i>
-                                                            Edit
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                            <td>
+                                                <div class="dropdown">
+                                                    <a href="#" class="text-reset" data-bs-toggle="dropdown" aria-expanded="false">
+                                                        <i class="feather-icon icon-more-vertical fs-5"></i>
+                                                    </a>
+                                                    <ul class="dropdown-menu">
+                                                        <li>
+                                                            <form action="{{route('admin.user.destroy',$user->id)}}" method="post" onclick="return confirm('Are Your Sure you want delete this User..')">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button class="dropdown-item text-danger">
+                                                                    <i class="bi bi-trash me-3"></i>
+                                                                    Delete
+                                                                </button>
+                                                            </form>
+                                                        </li>
+                                                        <li>
+                                                            <a class="dropdown-item" href="customers-edits.html">
+                                                                <i class="bi bi-pencil-square me-3"></i>
+                                                                Edit
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
                                     @endforeach
                                     </tbody>
                                 </table>
