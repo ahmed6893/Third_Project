@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->text('description');
-            $table->text('brand_image');
+            $table->text('brand_image')->nullable();
             $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });
