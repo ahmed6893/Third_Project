@@ -14,7 +14,10 @@ class Brand extends Model
 
         self::$brand->name = $request->name;
         self::$brand->description = $request->description;
-        self::$brand->brand_image = self::getImageUrl($request);
+        if ($request->hasFile('brand_image'))
+        {
+            self::$brand->brand_image = self::getImageUrl($request);
+        }
         self::$brand->save();
     }
 

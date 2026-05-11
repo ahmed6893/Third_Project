@@ -14,7 +14,10 @@ class SubCategory extends Model
         self::$subCategory->name        =$request->name;
         self::$subCategory->category_id  = $request->category_id;
         self::$subCategory->description =$request->description;
-        self::$subCategory->sub_images =self::getImageUrl($request);
+        if ($request->hasFile('sub_images'))
+        {
+            self::$subCategory->sub_images =self::getImageUrl($request);
+        }
         self::$subCategory->save();
     }
     public static function getImageUrl($request)

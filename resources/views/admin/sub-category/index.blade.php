@@ -73,9 +73,16 @@
                                     @foreach($subCategories as $subCategory)
                                         <tr>
                                             <td>{{$loop->iteration}}</td>
-                                            <td>
-                                                <img src="{{asset($subCategory->sub_images)}}" alt="" class="icon-shape icon-sm" />
-                                            </td>
+                                            @if (file_exists($subCategory->sub_images))
+                                                <td>
+                                                    <img src="{{asset($subCategory->sub_images)}}" alt="" class="icon-shape icon-sm" />
+                                                </td>
+                                             @else
+                                                <td>
+                                                    NO IMAGE
+                                                </td>
+                                            @endif
+
                                             <td><a href="#" class="text-reset">{{$subCategory->category->name ?? 'N/A'}}</a></td>
                                             <td><a href="#" class="text-reset">{{$subCategory->name}}</a></td>
                                             <td class="text-dark">
