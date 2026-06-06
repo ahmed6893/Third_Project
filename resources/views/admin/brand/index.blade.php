@@ -73,7 +73,11 @@
                                         <tr>
                                             <td>{{$loop->iteration}}</td>
                                             <td>
-                                                <img src="{{asset($brand->brand_image)}}" alt="" class="icon-shape icon-sm" />
+                                                @if ($brand->brand_image)
+                                                    <img src="{{asset($brand->brand_image)}}" alt="" class="icon-shape icon-sm" />
+                                                @else
+                                                    No Image
+                                                @endif
                                             </td>
                                             <td><a href="#" class="text-reset">{{$brand->name}}</a></td>
                                             <td class="text-dark">

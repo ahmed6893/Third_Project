@@ -54,7 +54,7 @@ class ColorController extends Controller
     public function update(Request $request, Color $color)
     {
         Color::updateColor($request,$color->id);
-     return back()->with('message','Color Info Updated');
+        return back()->with('message','Color Info Updated');
     }
 
     /**

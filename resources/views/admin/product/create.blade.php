@@ -46,8 +46,8 @@
                                 <!-- input -->
                                 <div class="mb-3 col-lg-6">
                                     <label class="form-label">Product Category</label>
-                                    <select class="form-select" name="category_id">
-                                        <option selected>Product Category</option>
+                                    <select class="form-select" name="category_id" required>
+                                        <option value="" disabled selected>Product Category</option>
                                         @foreach($categories as $category)
                                         <option value="{{$category->id}}">{{$category->name}}</option>
                                         @endforeach
@@ -56,8 +56,8 @@
                                 <!-- input -->
                                 <div class="mb-3 col-lg-6">
                                     <label class="form-label">Product Sub Category</label>
-                                    <select class="form-select" name="sub_category_id">
-                                        <option selected>Product Sub Category</option>
+                                    <select class="form-select" name="sub_category_id" required>
+                                        <option value="" disabled selected>Product Sub Category</option>
                                         @foreach($subCategories as $subCategory)
                                             <option value="{{$subCategory->id}}">{{$subCategory->name}}</option>
                                         @endforeach
@@ -67,8 +67,8 @@
                                 <!-- input -->
                                 <div class="mb-3 col-lg-6">
                                     <label class="form-label">Brands</label>
-                                    <select class="form-select" name="brand_id">
-                                        <option >Select Brands</option>
+                                    <select class="form-select" name="brand_id" required>
+                                        <option value="" disabled selected>Select Brands</option>
                                         @foreach($brands as $brand)
                                             <option value="{{$brand->id}}">{{$brand->name}}</option>
                                         @endforeach
@@ -76,8 +76,8 @@
                                 </div>
                                 <div class="mb-3 col-lg-6">
                                     <label class="form-label">Units</label>
-                                    <select class="form-select" name="unit_id">
-                                        <option >Select Units</option>
+                                    <select class="form-select" name="unit_id" required>
+                                        <option value="" disabled selected>Select Units</option>
                                         @foreach($units as $unit)
                                             <option value="{{$unit->id}}">{{$unit->name}}</option>
                                         @endforeach
@@ -85,8 +85,8 @@
                                 </div>
                                 <div class="mb-3 col-lg-6">
                                     <label class="form-label">Kilograms</label>
-                                    <select class="form-select" name="kilogram[]" multiple>
-                                        <option >Select Kilograms</option>
+                                    <select class="form-select" name="kilogram[]" multiple required>
+                                        <option value="" disabled>Select Kilograms</option>
                                         @foreach($kilograms as $kilogram)
                                             <option value="{{$kilogram->id}}">{{$kilogram->name}}</option>
                                         @endforeach
